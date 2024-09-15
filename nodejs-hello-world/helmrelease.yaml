@@ -1,0 +1,16 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nodejs-hello-world
+  namespace: nodejs-hello-world
+spec:
+  chart:
+    spec:
+      chart: ./nodejshelloworld  # Path to the Helm chart directory
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+      version: '1.0.0'  # Set the version of the chart if needed
+  values:
+    # Specify any values you need to override
+    replicaCount: 1

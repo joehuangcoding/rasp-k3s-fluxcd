@@ -1,0 +1,37 @@
+# values.yaml
+
+replicaCount: 1
+
+image:
+  repository: joehuangcoding/nodejs-helloworld
+  tag: v0.0.4
+  pullPolicy: IfNotPresent
+
+service:
+  name: nodejs-app
+  type: ClusterIP
+  port: 80
+
+ingress:
+  name: nodejs-app
+  enabled: true
+  annotations: {
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  }
+  hosts:
+    - host: nodejshelloworld.alittlehub.com
+      paths:
+        - path: /
+          backend:
+            service:
+              name: nodejs-app
+              port:
+                number: 80
+      
+serviceAccount:
+  create: true
+
+autoscaling:
+  enabled: false
+
+resources: {}
