@@ -5,4 +5,4 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - cert-manager.yaml
-- issuer.yaml
+- cluster-issuer.yaml
