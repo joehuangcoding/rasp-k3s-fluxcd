@@ -15,26 +15,17 @@ service:
 ingress:
   name: nodejs-hello-world
   enabled: true
-  annotations: {
+  annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-  }
   hosts:
     - host: nodejshelloworld.alittlehub.com
       paths:
         - path: /
-          backend:
-            service:
-              name: nodejs-hello-world
-              port:
-                number: 80
+          pathType: Prefix
     - host: nodejshelloworld.goodhub.work.gd
       paths:
         - path: /
-          backend:
-            service:
-              name: nodejs-hello-world
-              port:
-                number: 80
+          pathType: Prefix
       
 serviceAccount:
   create: true
