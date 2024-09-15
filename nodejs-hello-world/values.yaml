@@ -27,6 +27,14 @@ ingress:
               name: nodejs-hello-world
               port:
                 number: 80
+    - host: nodejshelloworld.goodhub.work.gd.com
+      paths:
+        - path: /
+          backend:
+            service:
+              name: nodejs-hello-world
+              port:
+                number: 80
       
 serviceAccount:
   create: true
