@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./../../../infrastructure/cert-manager
+  path: ./../../../infrastructure/issuer
   prune: true
   wait: true
 
