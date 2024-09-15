@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: ./nodejshelloworld  # Path to the Helm chart directory
+      chart: ./nodejs-hello-world  # Path to the Helm chart directory
       sourceRef:
         kind: GitRepository
         name: flux-system
