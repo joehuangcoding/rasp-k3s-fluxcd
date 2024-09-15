@@ -14,3 +14,4 @@ spec:
   path: ./../../../infrastructure
   prune: true
   wait: true
+
