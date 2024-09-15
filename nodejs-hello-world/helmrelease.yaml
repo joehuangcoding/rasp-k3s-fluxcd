@@ -6,11 +6,10 @@ metadata:
 spec:
   chart:
     spec:
-      chart: ./nodejs-hello-world  # Path to the Helm chart directory
+      chart: ./nodejs-hello-world
       sourceRef:
         kind: GitRepository
         name: flux-system
-      version: '1.0.0'  # Set the version of the chart if needed
   interval: 10m
   install:
       createNamespace: true 
@@ -18,4 +17,3 @@ spec:
     # Specify any values you need to override
     replicaCount: 1
     namespace: nodejs-hello-world
-  targetNamespace: nodejs-hello-world
