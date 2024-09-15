@@ -35,3 +35,5 @@ autoscaling:
   enabled: false
 
 resources: {}
+
+namespace: nodejs-hello-world
