@@ -42,11 +42,13 @@ flux reconcile helmrelease <helmrelease-name> --namespace <namespace>
 
 e.g.
 
-flux reconcile source git flux-system --namespace flux-system
+flux reconcile source git flux-system --namespace flux-system 
 
 flux reconcile kustomization nodejs-hello-world --namespace flux-system
 
+// change the version 0.1.2 -> 0.1.3 in Chart.yaml
 flux reconcile helmrelease nodejs-hello-world --namespace flux-system
 
-
+--with-source: Reconcile the source (e.g., GitRepository or HelmRepository) before reconciling the resource.
+--dry-run: Preview the changes without applying them.
 ```
