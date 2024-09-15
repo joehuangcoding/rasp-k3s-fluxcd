@@ -13,7 +13,7 @@ spec:
     {{- range .Values.ingress.hosts }}
     - hosts:
       - {{ .host }}
-      secretName: web-tls-secret
+      secretName: {{ .secretName }}
     {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
