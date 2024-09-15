@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: nodejs-hello-world
-  namespace: flux-system 
+  namespace: flux-system
 spec:
   chart:
     spec:
@@ -13,7 +13,7 @@ spec:
       version: '1.0.0'  # Set the version of the chart if needed
   interval: 10m
   install:
-    createNamespace: true
+      createNamespace: true 
   values:
     # Specify any values you need to override
     replicaCount: 1
