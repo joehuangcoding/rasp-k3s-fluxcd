@@ -8,12 +8,12 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  name: nodejs-app
+  name: nodejs-hello-world
   type: ClusterIP
   port: 80
 
 ingress:
-  name: nodejs-app
+  name: nodejs-hello-world
   enabled: true
   annotations: {
     cert-manager.io/cluster-issuer: letsencrypt-prod
@@ -24,7 +24,7 @@ ingress:
         - path: /
           backend:
             service:
-              name: nodejs-app
+              name: nodejs-hello-world
               port:
                 number: 80
       
