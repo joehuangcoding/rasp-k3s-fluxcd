@@ -6,7 +6,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: ./../../../nodejs-hello-world/nodejs-app
+      chart: ./../../../nodejs-hello-world
       sourceRef:
         kind: GitRepository
         name: flux-system
