@@ -23,6 +23,6 @@ spec:
             command: ["/bin/sh", "-c"]
             args:
             - |
-              curl https://api.dnsexit.com/dns/ud/?apikey=xGckeSX23twAwA7J8uXmEFEmXOJnSk6x -d "host=goodhub.work.gd"
+              curl https://api.dnsexit.com/dns/ud/?apikey=GckeSX23twAwA7J8uXmEFEmXOJnSk6 -d "host=goodhub.work.gd"
               echo "Done"
           restartPolicy: OnFailure
