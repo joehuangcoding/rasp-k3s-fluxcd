@@ -11,6 +11,9 @@ spec:
         kind: GitRepository
         name: flux-system
       version: '1.0.0'  # Set the version of the chart if needed
+  interval: 10m
+  install:
+    createNamespace: true
   values:
     # Specify any values you need to override
     replicaCount: 1
