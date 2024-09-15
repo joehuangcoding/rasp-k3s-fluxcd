@@ -17,3 +17,4 @@ spec:
   values:
     # Specify any values you need to override
     replicaCount: 1
+  targetNamespace: nodejs-hello-world
