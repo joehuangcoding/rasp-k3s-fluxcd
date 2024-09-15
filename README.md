@@ -25,3 +25,28 @@ flux bootstrap github \
 
 
 ## Deployment your first app using fluxcd. Example here deloying cert-manager into the cluster
+
+
+## Commands
+```
+// Reconcile source/helm chart first then kustomization and helmrelease
+
+
+flux reconcile source git <git-repo-name> --namespace <namespace>
+
+flux reconcile source helm <helm-repo-name> --namespace <namespace>
+
+flux reconcile kustomization <kustomization-name> --namespace <namespace>
+
+flux reconcile helmrelease <helmrelease-name> --namespace <namespace>
+
+e.g.
+
+flux reconcile source git flux-system --namespace flux-system
+
+flux reconcile kustomization nodejs-hello-world --namespace flux-system
+
+flux reconcile helmrelease nodejs-hello-world --namespace flux-system
+
+
+```
