@@ -1,0 +1,28 @@
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: freedomain-dns-update
+  namespace: default
+spec:
+  schedule: "*/30 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: node-role.kubernetes.io/master
+                    operator: Exists
+          containers:
+          - name: freedomain-dns-update
+            image: joehuangcoding/rasp-curl:0.0.1
+            command: ["/bin/sh", "-c"]
+            args:
+            - |
+              curl https://api.dnsexit.com/dns/ud/?apikey=xGckeSX23twAwA7J8uXmEFEmXOJnSk6x -d "host=goodhub.work.gd"
+              echo "Done"
+          restartPolicy: OnFailure
