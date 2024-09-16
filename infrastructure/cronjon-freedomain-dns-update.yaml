@@ -19,7 +19,7 @@ spec:
                     operator: Exists
           containers:
           - name: freedomain-dns-update
-            image: joehuangcoding/rasp-curl:0.0.1
+            image: curlimages/curl:8.10.0
             command: ["/bin/sh", "-c"]
             args:
             - |
