@@ -9,7 +9,7 @@ resources:
   - cronjon-freedomain-dns-update.yaml
   - flux-system-access-role.yaml
   - ./capacitor/namespace.yaml
-  - flux-system-access-rolebinding.yaml
+  - capacitor-access-binding.yaml
   - ./capacitor/deployment.yaml
   - ./capacitor/service.yaml
   - ./capacitor/ingress.yaml
