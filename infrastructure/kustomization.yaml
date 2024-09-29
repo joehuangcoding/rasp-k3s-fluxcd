@@ -7,6 +7,6 @@ resources:
   - cert-manager.yaml
   - cluster-issuer.yaml
   - cronjon-freedomain-dns-update.yaml
-  - ./capacitor/deployment.yaml
+  # - ./capacitor/deployment.yaml
   - ./capacitor/service.yaml
   - ./capacitor/ingress.yaml
