@@ -5,7 +5,13 @@ metadata:
   namespace: capacitor
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
 spec:
+  tls:
+    - hosts:
+        - capacitor.goodhub.work.gd
+      secretName: capacitor-tls
   rules:
     - host: capacitor.goodhub.work.gd
       http:
