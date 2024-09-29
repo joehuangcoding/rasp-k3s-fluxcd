@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capacitor
+  namespace: flux-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: capacitor
+  template:
+    metadata:
+      labels:
+        app: capacitor
+    spec:
+      containers:
+        - name: capacitor
+          image: gimlet/capacitor:latest  # Adjust this based on the Docker Hub tag you want
+          ports:
+            - containerPort: 8080  # Change this to the port your application listens on
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
