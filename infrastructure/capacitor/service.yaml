@@ -8,5 +8,5 @@ spec:
     app: capacitor
   ports:
     - port: 80  # This is the port exposed by the service
-      targetPort: 8080  # This should match the containerPort in the Deployment
+      targetPort: 9000  # This should match the containerPort in the Deployment
   type: ClusterIP  # Change to LoadBalancer if you need an external IP

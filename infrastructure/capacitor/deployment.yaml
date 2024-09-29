@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
         - name: capacitor
-          image: gimlet/capacitor:latest  # Adjust this based on the Docker Hub tag you want
+          image: ghcr.io/gimlet-io/capacitor:v0.4.3
           ports:
-            - containerPort: 8080  # Change this to the port your application listens on
+            - containerPort: 9000
           resources:
             limits:
               memory: "512Mi"
