@@ -44,6 +44,10 @@ e.g.
 
 flux reconcile source git flux-system --namespace flux-system 
 
+flux reconcile kustomization flux-system --namespace flux-system
+
+flux reconcile kustomization infrastructure --namespace flux-system
+
 flux reconcile kustomization nodejs-hello-world --namespace flux-system
 
 // change the version 0.1.2 -> 0.1.3 in Chart.yaml
