@@ -7,9 +7,6 @@ resources:
   - cert-manager.yaml
   - cluster-issuer.yaml
   - cronjon-freedomain-dns-update.yaml
-  - flux-system-access-role.yaml
-  - ./capacitor/namespace.yaml
-  - capacitor-access-binding.yaml
   - ./capacitor/deployment.yaml
   - ./capacitor/service.yaml
   - ./capacitor/ingress.yaml
