@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: capacitor
-  namespace: flux-system
+  namespace: capacitor
 spec:
   replicas: 1
   selector:
