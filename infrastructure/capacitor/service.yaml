@@ -5,7 +5,8 @@ metadata:
   namespace: flux-system
 spec:
   selector:
-    app: capacitor
+    app.kubernetes.io/instance: capacitor
+    app.kubernetes.io/name: onechart
   ports:
     - port: 80  # This is the port exposed by the service
       targetPort: 9000  # This should match the containerPort in the Deployment
