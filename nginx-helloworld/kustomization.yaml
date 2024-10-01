@@ -4,5 +4,6 @@ metadata:
   name: nginx-helloworld
   namespace: flux-system
 resources:
+  - namespace.yaml
   - deployment.yaml
   - ingress.yaml
