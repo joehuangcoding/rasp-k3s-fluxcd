@@ -25,7 +25,7 @@ spec:
   tls:
     - hosts:
         - gitops.goodhub.work.gd
-      secretName: capacitor-tls
+      secretName: capacitor-tls-secret
   rules:
     - host: gitops.goodhub.work.gd
       http:
