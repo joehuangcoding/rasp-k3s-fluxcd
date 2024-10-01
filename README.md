@@ -42,6 +42,8 @@ flux reconcile helmrelease <helmrelease-name> --namespace <namespace>
 
 e.g.
 
+
+
 flux reconcile source git flux-system --namespace flux-system 
 
 flux reconcile kustomization flux-system --namespace flux-system
