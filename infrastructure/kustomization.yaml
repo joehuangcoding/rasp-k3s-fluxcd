@@ -8,5 +8,5 @@ resources:
   - cluster-issuer.yaml
   - cronjon-freedomain-dns-update.yaml
   # - ./capacitor/deployment.yaml
-  - ./capacitor/service.yaml
-  - ./capacitor/ingress.yaml
+  # - ./capacitor/service.yaml
+  # - ./capacitor/ingress.yaml
