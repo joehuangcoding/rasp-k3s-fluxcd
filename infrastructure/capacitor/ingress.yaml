@@ -24,10 +24,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - capacitor.goodhub.work.gd
+        - gitops.goodhub.work.gd
       secretName: capacitor-tls
   rules:
-    - host: capacitor.goodhub.work.gd
+    - host: gitops.goodhub.work.gd
       http:
         paths:
           - path: /
