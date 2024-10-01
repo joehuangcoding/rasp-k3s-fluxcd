@@ -7,4 +7,3 @@ resources:
 - infrastructure.yaml
 - nodejs-hello-world.yaml
 - capacitor-sync.yaml
-- capacitor-ingress.yaml
