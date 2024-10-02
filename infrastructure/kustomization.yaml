@@ -12,3 +12,4 @@ resources:
   # - ./capacitor/ingress.yaml
   - namespace.yaml
   - deployment.yaml
+  - ingress.yaml
