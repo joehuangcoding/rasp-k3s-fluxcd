@@ -10,6 +10,6 @@ resources:
   # - ./capacitor/deployment.yaml
   # - ./capacitor/service.yaml
   # - ./capacitor/ingress.yaml
-  - namespace.yaml
-  - deployment.yaml
-  - ingress.yaml
+  # - namespace.yaml
+  # - deployment.yaml
+  # - ingress.yaml

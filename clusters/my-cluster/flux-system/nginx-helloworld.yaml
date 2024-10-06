@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
+  retryInterval: 1m
+  timeout: 5m0s
   dependsOn:
     - name: infrastructure
   sourceRef:
@@ -14,4 +16,3 @@ spec:
   path: ./../../../nginx-helloworld
   prune: true
   wait: true
-  timeout: 5m0s
