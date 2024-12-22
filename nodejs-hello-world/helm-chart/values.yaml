@@ -19,7 +19,7 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
     - host: nodejshelloworld.goodhub.work.gd
-      secretName: helloworld-goodhub-tls-secret
+      secretName: helloworld4-tls-secret
       paths:
         - path: /
           pathType: Prefix
