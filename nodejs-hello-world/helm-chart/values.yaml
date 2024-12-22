@@ -23,7 +23,11 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-      
+    - host: nodejshelloworld.alittlehub.com
+      secretName: helloworld3-tls-secret
+      paths:
+        - path: /
+          pathType: Prefix
 serviceAccount:
   create: true
 
