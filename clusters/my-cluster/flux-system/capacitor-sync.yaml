@@ -33,10 +33,10 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  tls:
-    - hosts:
-        - gitops.alittlehub.com
-      secretName: capacitor2-tls-secret
+  # tls:
+  #   - hosts:
+  #       - gitops.alittlehub.com
+  #     secretName: capacitor2-tls-secret
   rules:
     - host: gitops.alittlehub.com
       http:
