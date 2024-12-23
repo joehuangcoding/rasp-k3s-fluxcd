@@ -20,7 +20,7 @@ spec:
           image: linuxshots/godaddy-ddns:latest
           env:
             - name: GD_NAME
-              value: "@"
+              value: ""
             - name: GD_DOMAIN
               value: "alittlehub.com"
             - name: GD_TTL
