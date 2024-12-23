@@ -26,6 +26,6 @@ spec:
             - name: GD_TTL
               value: "1200"
             - name: GD_KEY
-              value: "eoMG3vPaasXm_2j22WXae9RcihrDAceGzXH"
+              value: "eoMG3vPaasXm_3smDzjVoeBH3LXuJt8wrJ2"
             - name: GD_SECRET
-              value: "nfMMbb8DLHgQwcam7xjik"
+              value: "WEDcU7BGqANSx4Hfzc2Gij"
