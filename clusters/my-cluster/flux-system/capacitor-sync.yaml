@@ -33,12 +33,12 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  # tls:
-  #   - hosts:
-  #       - gitops.goodhub.work.gd
-  #     secretName: capacitor-tls-secret
+  tls:
+    - hosts:
+        - gitops.alittlehub.com
+      secretName: capacitor2-tls-secret
   rules:
-    - host: gitops.goodhub.work.gd
+    - host: gitops.alittlehub.com
       http:
         paths:
           - path: /
