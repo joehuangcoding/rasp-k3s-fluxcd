@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: godaddy-dns-update
+  labels:
+    app: godaddy-dns-update
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: godaddy-dns-update
+  template:
+    metadata:
+      labels:
+        app: godaddy-dns-update
+    spec:
+      containers:
+      - name: godaddy-dns-update
+        image: linuxshots/godaddy-ddns:latest
+        env:
+        - name: GD_NAME
+          value: "alittlehub"
+        - name: GD_DOMAIN
+          value: "alittlehub.com"
+        - name: GD_TTL
+          value: "1200"
+        - name: GD_KEY
+          value: "eoMG3vPaasXm_2j22WXae9RcihrDAceGzXH"
+        - name: GD_SECRET
+          value: "nfMMbb8DLHgQwcam7xjik"
+        restartPolicy: Always

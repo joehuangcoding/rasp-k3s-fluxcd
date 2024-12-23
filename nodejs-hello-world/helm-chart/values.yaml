@@ -18,17 +18,11 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
   hosts:
-    - host: nodejshelloworld.goodhub.work.gd
-      secretName: helloworld2-tls-secret
+    - host: nodejshelloworld.alittlehub.com
+      secretName: helloworld7-tls-secret
       paths:
         - path: /
           pathType: Prefix
-    - host: nodejshelloworld.goodhub.publicvm.com
-      secretName: helloworld3-tls-secret
-      paths:
-        - path: /
-          pathType: Prefix
-      
 serviceAccount:
   create: true
 
