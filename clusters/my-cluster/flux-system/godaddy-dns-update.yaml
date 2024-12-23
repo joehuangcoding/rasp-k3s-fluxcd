@@ -29,4 +29,3 @@ spec:
               value: "eoMG3vPaasXm_2j22WXae9RcihrDAceGzXH"
             - name: GD_SECRET
               value: "nfMMbb8DLHgQwcam7xjik"
-          restartPolicy: Always
