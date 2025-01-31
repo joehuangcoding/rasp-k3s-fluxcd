@@ -24,40 +24,40 @@ spec:
       limits:
         cpu: 256m
         memory: 512Mi
-    service:
-      type: ClusterIP
-      pipelines:
-        logs:
-          receivers:
-            - filelog
-            - otlp
-          processors:
-            - memory_limiter
-            - batch
-          exporters:
-            - loki
-            - debug/logs
-        metrics:
-          receivers:
-            - otlp
-          processors:
-            - memory_limiter
-            - filter/ottl
-            - transform
-            - batch
-          exporters:
-            - prometheusremotewrite
-            - debug/metrics
-        traces:
-        receivers:
-          - otlp
-        processors:
-          - memory_limiter
-          - batch
-        exporters:
-          - otlp
-          - debug/traces
     config:
+      service:
+        type: ClusterIP
+        pipelines:
+          logs:
+            receivers:
+              - filelog
+              - otlp
+            processors:
+              - memory_limiter
+              - batch
+            exporters:
+              - loki
+              - debug/logs
+          metrics:
+            receivers:
+              - otlp
+            processors:
+              - memory_limiter
+              - filter/ottl
+              - transform
+              - batch
+            exporters:
+              - prometheusremotewrite
+              - debug/metrics
+          traces:
+            receivers:
+              - otlp
+            processors:
+              - memory_limiter
+              - batch
+            exporters:
+              - otlp
+              - debug/traces
       extensions:
         health_check:
           check_collector_pipeline:
