@@ -4,4 +4,5 @@ metadata:
   name: opentelemetry-collector
   namespace: opentelemetry-collector
 resources:
+  - helmrepository.yaml
   - helmrelease.yaml
