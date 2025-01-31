@@ -7,3 +7,4 @@ resources:
 - infrastructure.yaml
 - nodejs-hello-world.yaml
 - capacitor-sync.yaml
+- opentelemetry-collector.yaml
