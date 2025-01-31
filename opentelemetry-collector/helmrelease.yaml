@@ -24,24 +24,23 @@ spec:
       limits:
         cpu: 256m
         memory: 512Mi
-    extensions:
-      health_check:
-        check_collector_pipeline:
-          enabled: false
-      basicauth/logs:
-        client_auth:
-          username: 1117173
-          password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
-      basicauth/metrics:
-        client_auth:
-          username: 2242991
-          password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
-      basicauth/traces:
-        client_auth:
-          username: 1111488
-          password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
-    
     config:
+      extensions:
+        health_check:
+          check_collector_pipeline:
+            enabled: false
+        basicauth/logs:
+          client_auth:
+            username: 1117173
+            password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
+        basicauth/metrics:
+          client_auth:
+            username: 2242991
+            password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
+        basicauth/traces:
+          client_auth:
+            username: 1111488
+            password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
       service:
         pipelines:
           logs:
