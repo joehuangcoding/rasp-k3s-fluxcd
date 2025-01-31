@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: opentelemetry-collector
+  name: my-opentelemetry-demo
   namespace: flux-system
 spec:
   interval: 10m0s
