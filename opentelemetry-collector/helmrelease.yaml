@@ -4,6 +4,7 @@ metadata:
   name: opentelemetry-collector
   namespace: opentelemetry-collector
 spec:
+  interval: 5m 
   releaseName: opentelemetry-collector
   chart:
     spec:
