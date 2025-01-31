@@ -26,29 +26,29 @@ spec:
         memory: 512Mi
     service:
       type: ClusterIP
-    pipelines:
-      logs:
-        receivers:
-          - filelog
-          - otlp
-        processors:
-          - memory_limiter
-          - batch
-        exporters:
-          - loki
-          - debug/logs
-      metrics:
-        receivers:
-          - otlp
-        processors:
-          - memory_limiter
-          - filter/ottl
-          - transform
-          - batch
-        exporters:
-          - prometheusremotewrite
-          - debug/metrics
-      traces:
+      pipelines:
+        logs:
+          receivers:
+            - filelog
+            - otlp
+          processors:
+            - memory_limiter
+            - batch
+          exporters:
+            - loki
+            - debug/logs
+        metrics:
+          receivers:
+            - otlp
+          processors:
+            - memory_limiter
+            - filter/ottl
+            - transform
+            - batch
+          exporters:
+            - prometheusremotewrite
+            - debug/metrics
+        traces:
         receivers:
           - otlp
         processors:
