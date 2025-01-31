@@ -4,5 +4,5 @@ metadata:
   name: open-telemetry
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 10m
   url: https://open-telemetry.github.io/opentelemetry-helm-charts
