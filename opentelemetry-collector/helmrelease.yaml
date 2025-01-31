@@ -21,23 +21,7 @@ spec:
       limits:
         cpu: 256m
         memory: 512Mi
-    config:
-      extensions:
-        health_check:
-          check_collector_pipeline:
-            enabled: false
-        memory_ballast: {}
-      receivers:
-        otlp:
-          protocols:
-            grpc:
-              endpoint: ${env:MY_POD_IP}:4317
-            http:
-              endpoint: ${env:MY_POD_IP}:4318
-              cors:
-                allowed_origins:
-                  - "http://*"
-                  - "https://*"
+
       processors:
         memory_limiter:
           check_interval: 30s
@@ -95,6 +79,10 @@ spec:
               - debug/traces
     config:
       extensions:
+        health_check:
+          check_collector_pipeline:
+            enabled: false
+        memory_ballast: {}
         basicauth/logs:
           client_auth:
             username: 1117173
@@ -128,3 +116,14 @@ spec:
           verbosity: basic
         debug/traces:
           verbosity: basic
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+              endpoint: ${env:MY_POD_IP}:4317
+            http:
+              endpoint: ${env:MY_POD_IP}:4318
+              cors:
+                allowed_origins:
+                  - "http://*"
+                  - "https://*"
