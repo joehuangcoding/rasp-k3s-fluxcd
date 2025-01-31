@@ -16,8 +16,6 @@ spec:
       version: 0.73.1
   values:
     mode: deployment
-    service:
-      type: ClusterIP
     resources:
       limits:
         cpu: 256m
@@ -92,9 +90,8 @@ spec:
           verbosity: basic
         debug/traces:
           verbosity: basic
-
-    # Pipelines (moved out from under service)
     service:
+      type: ClusterIP
       extensions:
         - basicauth/logs
         - basicauth/metrics
