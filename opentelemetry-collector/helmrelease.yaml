@@ -4,7 +4,7 @@ metadata:
   name: opentelemetry-collector
   namespace: opentelemetry-collector
 spec:
-  interval: 5m 
+  interval: 5m
   releaseName: opentelemetry-collector
   chart:
     spec:
@@ -23,61 +23,7 @@ spec:
         cpu: 256m
         memory: 512Mi
 
-      processors:
-        memory_limiter:
-          check_interval: 30s
-          limit_percentage: 50
-          spike_limit_percentage: 30
-        filter/ottl:
-          error_mode: ignore
-          metrics:
-            metric:
-              - 'name == "queueSize"'
-              - 'name == "rpc.server.duration"'
-        transform:
-          metric_statements:
-            - context: metric
-              statements:
-                - set(description, "") where name == "queueSize"
-                - set(description, "") where name == "rpc.server.duration"
-                - set(description, "") where name == "http.client.duration"
-      service:
-        extensions:
-          - basicauth/logs
-          - basicauth/metrics
-          - basicauth/traces
-          - health_check
-        pipelines:
-          logs:
-            receivers: 
-              - filelog
-              - otlp
-            processors:
-              - memory_limiter
-              - batch
-            exporters: 
-              - loki
-              - debug/logs
-          metrics:
-            receivers:
-              - otlp
-            processors:
-              - memory_limiter
-              - filter/ottl
-              - transform
-              - batch
-            exporters:
-              - prometheusremotewrite
-              - debug/metrics
-          traces:
-            receivers:
-              - otlp
-            processors:
-              - memory_limiter
-              - batch
-            exporters:
-              - otlp
-              - debug/traces
+    # Config section (Moved outside of service and processors)
     config:
       extensions:
         health_check:
@@ -96,6 +42,35 @@ spec:
           client_auth:
             username: 1111488
             password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+              endpoint: ${env:MY_POD_IP}:4317
+            http:
+              endpoint: ${env:MY_POD_IP}:4318
+              cors:
+                allowed_origins:
+                  - "http://*"
+                  - "https://*"
+      processors:
+        memory_limiter:
+          check_interval: 30s
+          limit_percentage: 50
+          spike_limit_percentage: 30
+        filter/ottl:
+          error_mode: ignore
+          metrics:
+            metric:
+              - 'name == "queueSize"'
+              - 'name == "rpc.server.duration"'
+        transform:
+          metric_statements:
+            - context: metric
+              statements:
+                - set(description, "") where name == "queueSize"
+                - set(description, "") where name == "rpc.server.duration"
+                - set(description, "") where name == "http.client.duration"
       exporters:
         loki:
           endpoint: "https://logs-prod-026.grafana.net/loki/api/v1/push"
@@ -117,14 +92,42 @@ spec:
           verbosity: basic
         debug/traces:
           verbosity: basic
-      receivers:
-        otlp:
-          protocols:
-            grpc:
-              endpoint: ${env:MY_POD_IP}:4317
-            http:
-              endpoint: ${env:MY_POD_IP}:4318
-              cors:
-                allowed_origins:
-                  - "http://*"
-                  - "https://*"
+
+    # Pipelines (moved out from under service)
+    service:
+      extensions:
+        - basicauth/logs
+        - basicauth/metrics
+        - basicauth/traces
+        - health_check
+      pipelines:
+        logs:
+          receivers:
+            - filelog
+            - otlp
+          processors:
+            - memory_limiter
+            - batch
+          exporters:
+            - loki
+            - debug/logs
+        metrics:
+          receivers:
+            - otlp
+          processors:
+            - memory_limiter
+            - filter/ottl
+            - transform
+            - batch
+          exporters:
+            - prometheusremotewrite
+            - debug/metrics
+        traces:
+          receivers:
+            - otlp
+          processors:
+            - memory_limiter
+            - batch
+          exporters:
+            - otlp
+            - debug/traces
