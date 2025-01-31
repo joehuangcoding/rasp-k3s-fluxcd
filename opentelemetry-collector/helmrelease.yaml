@@ -1,0 +1,130 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: opentelemetry-collector
+  namespace: observability
+spec:
+  releaseName: opentelemetry-collector
+  chart:
+    spec:
+      chart: opentelemetry-collector
+      sourceRef:
+        kind: HelmRepository
+        name: open-telemetry
+        namespace: flux-system
+      version: "0.19.0" # Use the appropriate version
+  values:
+    mode: deployment
+    service:
+      type: ClusterIP
+    resources:
+      limits:
+        cpu: 256m
+        memory: 512Mi
+    config:
+      extensions:
+        health_check:
+          check_collector_pipeline:
+            enabled: false
+        memory_ballast: {}
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+              endpoint: ${env:MY_POD_IP}:4317
+            http:
+              endpoint: ${env:MY_POD_IP}:4318
+              cors:
+                allowed_origins:
+                  - "http://*"
+                  - "https://*"
+      processors:
+        memory_limiter:
+          check_interval: 30s
+          limit_percentage: 50
+          spike_limit_percentage: 30
+        filter/ottl:
+          error_mode: ignore
+          metrics:
+            metric:
+              - 'name == "queueSize"'
+              - 'name == "rpc.server.duration"'
+        transform:
+          metric_statements:
+            - context: metric
+              statements:
+                - set(description, "") where name == "queueSize"
+                - set(description, "") where name == "rpc.server.duration"
+                - set(description, "") where name == "http.client.duration"
+      service:
+        extensions:
+          - basicauth/logs
+          - basicauth/metrics
+          - basicauth/traces
+          - health_check
+        pipelines:
+          logs:
+            receivers: 
+              - filelog
+              - otlp
+            processors:
+              - memory_limiter
+              - batch
+            exporters: 
+              - loki
+              - debug/logs
+          metrics:
+            receivers:
+              - otlp
+            processors:
+              - memory_limiter
+              - filter/ottl
+              - transform
+              - batch
+            exporters:
+              - prometheusremotewrite
+              - debug/metrics
+          traces:
+            receivers:
+              - otlp
+            processors:
+              - memory_limiter
+              - batch
+            exporters:
+              - otlp
+              - debug/traces
+    config:
+      extensions:
+        basicauth/logs:
+          client_auth:
+            username: 1117173
+            password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
+        basicauth/metrics:
+          client_auth:
+            username: 2242991
+            password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
+        basicauth/traces:
+          client_auth:
+            username: 1111488
+            password: "glc_eyJvIjoiMTMzODAxOSIsIm4iOiJ0ZXN0LWdyYWZhbmEtZ3JhZmFuYWpoY29kaW5nIiwiayI6ImFPNFFRM1prODV5STBRTjU3ZDNqZVQxOCIsIm0iOnsiciI6InVzIn19"
+      exporters:
+        loki:
+          endpoint: "https://logs-prod-026.grafana.net/loki/api/v1/push"
+          auth:
+            authenticator: basicauth/logs
+        prometheusremotewrite:
+          resource_to_telemetry_conversion:
+            enabled: true
+          endpoint: "https://prometheus-prod-41-prod-au-southeast-1.grafana.net/api/prom/api/prom/push"
+          auth:
+            authenticator: basicauth/metrics
+        otlp:
+          endpoint: "tempo-prod-16-prod-au-southeast-1.grafana.net/tempo:443"
+          auth:
+            authenticator: basicauth/traces
+        debug/logs:
+          verbosity: basic
+        debug/metrics:
+          verbosity: basic
+        debug/traces:
+          verbosity: basic
