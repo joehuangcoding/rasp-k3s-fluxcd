@@ -13,6 +13,7 @@ spec:
         kind: HelmRepository
         name: open-telemetry
         namespace: flux-system
+      version: 0.73.1
   values:
     mode: deployment
     service:
