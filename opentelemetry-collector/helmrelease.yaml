@@ -114,7 +114,6 @@ spec:
                 - set(description, "") where name == "queueSize"
                 - set(description, "") where name == "rpc.server.duration"
                 - set(description, "") where name == "http.client.duration"
-            k8sattributes/labels:
         k8sattributes/labels:
           auth_type: "serviceAccount"
           passthrough: false
