@@ -24,10 +24,23 @@ spec:
         enabled: true
       kubernetesEvents:
         enabled: true
+      clusterMetrics:
+        enabled: true
+      kubeletMetrics:
+        enabled: true
+      hostMetrics:
+        enabled: true
     resources:
       limits:
         cpu: 256m
         memory: 512Mi
+    ports:
+      metrics: 
+        enabled: true
+    podAnnotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "8888"
+      opentelemetry_community_demo: "true"
     config:
       extensions:
         health_check:
@@ -96,6 +109,20 @@ spec:
                 allowed_origins:
                   - "http://*"
                   - "https://*"
+        k8s_cluster:
+          collection_interval: 60s
+        kubeletstats:
+          collection_interval: 60s
+        hostmetrics:
+          collection_interval: 60s
+        prometheus:
+          config:
+            scrape_configs:
+              - job_name: 'opentelemetry-collector'
+                scrape_interval: 60s
+                static_configs:
+                  - targets:
+                      - owg-opentelemetry-collector:8888
       processors:
         memory_limiter:
           check_interval: 30s
@@ -114,6 +141,12 @@ spec:
                 - set(description, "") where name == "queueSize"
                 - set(description, "") where name == "rpc.server.duration"
                 - set(description, "") where name == "http.client.duration"
+        resource:
+          attributes:
+          - key: service.instance.id
+            from_attribute: k8s.pod.uid
+            action: insert
+          
         k8sattributes/labels:
           auth_type: "serviceAccount"
           passthrough: false
