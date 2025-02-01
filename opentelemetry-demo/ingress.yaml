@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: otel-demo
+  namespace: opentelemetry-demo
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - otel-demo.alittlehub.com
+      secretName: otel-demo-tls-secret
+  rules:
+    - host: otel-demo.alittlehub.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: opentelemetry-demo-frontend
+                port:
+                  number: 80
