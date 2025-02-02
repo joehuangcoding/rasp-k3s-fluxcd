@@ -222,7 +222,7 @@ spec:
           auth:
             authenticator: basicauth/metrics
         otlp:
-          endpoint: tempo-prod-16-prod-au-southeast-1.grafana.net/tempo:443 
+          endpoint: tempo-prod-16-prod-au-southeast-1.grafana.net:443 
           auth:
             authenticator: basicauth/traces
         debug/logs:
