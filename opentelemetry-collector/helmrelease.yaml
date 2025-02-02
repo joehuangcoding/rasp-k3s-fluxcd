@@ -241,11 +241,11 @@ spec:
           auth:
             authenticator: basicauth/traces
         debug/logs:
-          verbosity: basic
+          verbosity: normal
         debug/metrics:
-          verbosity: basic
+          verbosity: normal
         debug/traces:
-          verbosity: trace
+          verbosity: normal
       connectors:
         spanmetrics:
           histogram:
