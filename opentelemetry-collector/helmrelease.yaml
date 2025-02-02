@@ -105,10 +105,10 @@ spec:
               endpoint: ${env:MY_POD_IP}:4317
             http:
               endpoint: ${env:MY_POD_IP}:4318
-              cors:
-                allowed_origins:
-                  - "http://*"
-                  - "https://*"
+            cors:
+              allowed_origins:
+                - "http://*"
+                - "https://*"
         k8s_cluster:
           collection_interval: 60s
         kubeletstats:
