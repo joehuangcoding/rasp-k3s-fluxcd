@@ -19,7 +19,7 @@ spec:
     presets:
       logsCollection:
         enabled: true
-        includeCollectorLogs: false
+        includeCollectorLogs: true
       kubernetesAttributes:
         enabled: true
       kubernetesEvents:
@@ -241,11 +241,11 @@ spec:
           auth:
             authenticator: basicauth/traces
         debug/logs:
-          verbosity: basic
+          verbosity: debug
         debug/metrics:
-          verbosity: basic
+          verbosity: debug
         debug/traces:
-          verbosity: basic
+          verbosity: debug
       connectors:
         spanmetrics:
           histogram:
