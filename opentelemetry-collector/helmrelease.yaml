@@ -76,10 +76,13 @@ spec:
           metrics:
             receivers:
               - otlp
+              - spanmetrics
+              - servicegraph
             processors:
               - memory_limiter
               - filter/ottl
               - transform
+              - resource
               - batch
             exporters:
               - prometheusremotewrite
@@ -89,10 +92,14 @@ spec:
               - otlp
             processors:
               - memory_limiter
+              - transform
+              - resource
               - batch
             exporters:
               - otlp
               - debug/traces
+              - spanmetrics
+              - servicegraph
         extensions:
           - basicauth/logs
           - basicauth/metrics
@@ -141,6 +148,12 @@ spec:
                 - set(description, "") where name == "queueSize"
                 - set(description, "") where name == "rpc.server.duration"
                 - set(description, "") where name == "http.client.duration"
+                - keep_keys(resource.attributes, ["service.name", "span.name", "span.kind", "status.code", "service.instance.id"]) where name == "traces.spanmetrics.duration"
+                - set(name, "traces.spanmetrics.latency") where name == "traces.spanmetrics.duration"
+          trace_statements:
+            - context: span
+              statements:
+                - replace_pattern(name, "^HTTP\\s+([A-Z]+)", "$$1")
         resource:
           attributes:
           - key: service.instance.id
@@ -200,7 +213,9 @@ spec:
                 k8s_node_name,\
                 component,\
                 instance,\
-                name"
+                name,\
+                service_name,\
+                service_namespace"
 
         attributes/loki_add_hints:
           actions:
@@ -231,3 +246,13 @@ spec:
           verbosity: basic
         debug/traces:
           verbosity: basic
+      connectors:
+        spanmetrics:
+          histogram:
+            unit: s
+          namespace: traces.spanmetrics
+          metrics_flush_interval: 60s
+        servicegraph:
+          store:
+            ttl: 30s
+            max_items: 5000
