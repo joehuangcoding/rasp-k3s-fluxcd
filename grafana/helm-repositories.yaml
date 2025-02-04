@@ -13,7 +13,7 @@ metadata:
   name: loki-repo
   namespace: grafana
 spec:
-  url: https://grafana.github.io/loki/charts
+  url: https://grafana.github.io/helm-charts
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
@@ -21,7 +21,7 @@ metadata:
   name: tempo-repo
   namespace: grafana
 spec:
-  url: https://grafana.github.io/tempo/charts
+  url: https://grafana.github.io/helm-charts
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
