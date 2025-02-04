@@ -6,7 +6,7 @@ metadata:
 resources:
   - namespace.yaml 
   - helm-repositories.yaml
-  - grafana-helmrelease.yaml
-  - loki-helmrelease.yaml
-  - prometheus-helmrelease.yaml
-  - tempo-helmrelease.yaml
+  # - grafana-helmrelease.yaml
+  # - loki-helmrelease.yaml
+  # - prometheus-helmrelease.yaml
+  # - tempo-helmrelease.yaml
