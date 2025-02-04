@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: prometheus-repo
-  namespace: flux-system
+  namespace: grafana
 spec:
   url: https://prometheus-community.github.io/helm-charts
 ---
@@ -11,7 +11,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: loki-repo
-  namespace: flux-system
+  namespace: grafana
 spec:
   url: https://grafana.github.io/loki/charts
 ---
@@ -19,7 +19,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: tempo-repo
-  namespace: flux-system
+  namespace: grafana
 spec:
   url: https://grafana.github.io/tempo/charts
 ---
@@ -27,7 +27,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: grafana-repo
-  namespace: flux-system
+  namespace: grafana
 spec:
   interval: 5m0s
   url: https://grafana.github.io/helm-charts
