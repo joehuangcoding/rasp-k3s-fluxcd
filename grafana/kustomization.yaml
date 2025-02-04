@@ -5,6 +5,7 @@ metadata:
   namespace: grafana
 resources:
   - namespace.yaml 
+  - helm-repositories.yaml
   - grafana-helmrelease.yaml
   - loki-helmrelease.yaml
   - prometheus-helmrelease.yaml
