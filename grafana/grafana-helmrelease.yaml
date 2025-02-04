@@ -16,6 +16,8 @@ spec:
         namespace: grafana
   interval: 5m0s
   values:
+    podSecurityPolicy:
+      enabled: false 
     persistence:
       enabled: true
       size: 10Gi
