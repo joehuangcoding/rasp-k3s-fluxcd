@@ -1,12 +1,4 @@
-# kustomization.yaml
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+apiVersion: v1
+kind: Namespace
 metadata:
   name: grafana
-  namespace: grafana
-resources:
-  - namespace.yaml
-  - prometheus-helmrelease.yaml
-  - loki-helmrelease.yaml
-  - tempo-helmrelease.yaml
-  - grafana-helmrelease.yaml
