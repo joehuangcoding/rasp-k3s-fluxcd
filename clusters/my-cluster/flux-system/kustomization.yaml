@@ -7,5 +7,6 @@ resources:
 - infrastructure.yaml
 - nodejs-hello-world.yaml
 - capacitor-sync.yaml
+- grafana.yaml
 # - opentelemetry-collector.yaml
 # - opentelemetry-demo.yaml
