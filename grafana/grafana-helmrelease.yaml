@@ -17,7 +17,7 @@ spec:
   interval: 5m0s
   values:
     persistence:
-      enabled: true
+      enabled: false
       size: 10Gi
     adminPassword: "123456789"
     resources:
