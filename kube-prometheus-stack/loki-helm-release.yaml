@@ -15,6 +15,7 @@ spec:
         namespace: kp-stack
   values:
     singleBinary:
+      mode: enabled  
       replicas: 1
     storage:
       type: filesystem
@@ -26,3 +27,6 @@ spec:
       storageClass: standard
     limits_config:
       retention_period: 24h
+    config:
+      table_manager:
+        retention_deletes_enabled: true
