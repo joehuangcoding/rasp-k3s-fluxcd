@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: loki
+  namespace: kp-stack
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: loki
+      version: "5.9.1"
+      sourceRef:
+        kind: HelmRepository
+        name: kube-prometheus-stack
+        namespace: kp-stack
+  values:
+    singleBinary:
+      replicas: 1
+    storage:
+      type: filesystem
+    persistence:
+      enabled: true
+      size: 1Gi
+      accessModes:
+        - ReadWriteOnce
+      storageClass: standard
+    limits_config:
+      retention_period: 24h
