@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-        namespace: monitoring
+        namespace: kube-prometheus-stack
   values:
     # Add any custom values you want to override here
     grafana:
