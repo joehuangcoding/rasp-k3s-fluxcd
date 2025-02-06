@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 metadata:
   name: kube-prometheus-stack
-  namespace: flux-system
+  namespace: kp-stack
 resources:
   - namespace.yaml
   - helm-repository.yaml
