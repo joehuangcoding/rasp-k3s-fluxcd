@@ -14,9 +14,17 @@ spec:
         name: prometheus-community
         namespace: kp-stack
   values:
-    # Add any custom values you want to override here
     grafana:
       enabled: true
+      additionalDataSources:
+        - name: Loki
+          type: loki
+          access: proxy
+          url: http://loki.kp-stack.svc.cluster.local:3100
+        - name: Tempo
+          type: tempo
+          access: proxy
+          url: http://tempo.kp-stack.svc.cluster.local:3100
     prometheus:
       prometheusSpec:
         storageSpec:
@@ -26,3 +34,10 @@ spec:
               resources:
                 requests:
                   storage: 50Gi
+        additionalScrapeConfigs:
+          - job_name: "loki"
+            static_configs:
+              - targets: ["loki.kp-stack.svc.cluster.local:3100"]
+          - job_name: "tempo"
+            static_configs:
+              - targets: ["tempo.kp-stack.svc.cluster.local:3200"]
