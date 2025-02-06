@@ -7,4 +7,6 @@ resources:
   - namespace.yaml
   - helm-repository.yaml
   - helm-release.yaml
+  - loki-helm-release.yaml
+  - tempo-helm-release.yaml
  
