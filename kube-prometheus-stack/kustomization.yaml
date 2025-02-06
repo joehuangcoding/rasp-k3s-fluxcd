@@ -8,6 +8,6 @@ resources:
   - helm-repository.yaml
   - grafana-helm-repository.yaml
   - helm-release.yaml
-  - loki-helm-release.yaml
-  - tempo-helm-release.yaml
+  # - loki-helm-release.yaml
+  # - tempo-helm-release.yaml
  
