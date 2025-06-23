@@ -6,7 +6,7 @@ metadata:
 resources:
   - cert-manager.yaml
   - cluster-issuer.yaml
-  - cronjon-freedomain-dns-update.yaml
+  - cronjon-cloudflare-dns-update.yaml
   # - ./capacitor/deployment.yaml
   # - ./capacitor/service.yaml
   # - ./capacitor/ingress.yaml
