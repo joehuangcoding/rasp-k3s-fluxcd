@@ -23,11 +23,6 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-    - host: nodejshelloworld.goodhub.work.gd
-      secretName: helloworld-goodhub-tls-secret
-      paths:
-        - path: /
-          pathType: Prefix
 serviceAccount:
   create: true
 
