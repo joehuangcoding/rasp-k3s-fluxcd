@@ -16,14 +16,28 @@ metadata:
   name: capacitor
   namespace: flux-system
 spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: capacitor
   policyTypes:
     - Ingress
   ingress:
     - from:
-      - namespaceSelector: {}
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: capacitor
+        - podSelector: {}  # Allow from pods in the same namespace
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: capacitor
+  namespace: flux-system
+spec:
+  selector:
+    app.kubernetes.io/instance: capacitor
+  ports:
+    - port: 80         # Exposed to Ingress
+      targetPort: 9000 # Port inside the container
+      protocol: TCP
+      name: http
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -48,7 +62,7 @@ spec:
               service:
                 name: capacitor
                 port:
-                  number: 9000
+                  number: 80
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -66,3 +80,4 @@ spec:
   sourceRef:
     kind: OCIRepository
     name: capacitor
+    namespace: flux-system
