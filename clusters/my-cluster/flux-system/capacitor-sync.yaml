@@ -16,38 +16,29 @@ metadata:
   name: capacitor
   namespace: flux-system
 spec:
-  podSelector:
-    matchLabels:
-      app.kubernetes.io/instance: capacitor
   policyTypes:
     - Ingress
   ingress:
     - from:
-        - podSelector: {}  # Allow from all pods in same namespace
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: capacitor
-  namespace: flux-system
-spec:
-  selector:
-    app.kubernetes.io/instance: capacitor
-  ports:
-    - port: 80
-      targetPort: 9000
-      protocol: TCP
-      name: http
+      - namespaceSelector: {}
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: capacitor
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: capacitor
   namespace: flux-system
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
-  ingressClassName: nginx  # <-- Add this line if needed
+  # tls:
+  #   - hosts:
+  #       - gitops.goodhub.work.gd
+  #     secretName: capacitor-tls-secret
   rules:
-    - host: gitops.alittlehub.com
+    - host: gitops.goodhub.work.gd
       http:
         paths:
           - path: /
@@ -56,7 +47,7 @@ spec:
               service:
                 name: capacitor
                 port:
-                  number: 80
+                  number: 9000
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -70,8 +61,7 @@ spec:
   timeout: 5m
   wait: true
   prune: true
-  path: "./"  # <-- Update if source repo has manifests in subfolder
+  path: "./"
   sourceRef:
     kind: OCIRepository
     name: capacitor
-    namespace: flux-system
