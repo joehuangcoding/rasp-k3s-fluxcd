@@ -23,7 +23,7 @@ spec:
     - Ingress
   ingress:
     - from:
-        - podSelector: {}  # Allow from pods in the same namespace
+        - podSelector: {}  # Allow from all pods in same namespace
 ---
 apiVersion: v1
 kind: Service
@@ -34,8 +34,8 @@ spec:
   selector:
     app.kubernetes.io/instance: capacitor
   ports:
-    - port: 80         # Exposed to Ingress
-      targetPort: 9000 # Port inside the container
+    - port: 80
+      targetPort: 9000
       protocol: TCP
       name: http
 ---
@@ -45,6 +45,7 @@ metadata:
   name: capacitor
   namespace: flux-system
 spec:
+  ingressClassName: nginx  # <-- Add this line if needed
   rules:
     - host: gitops.alittlehub.com
       http:
@@ -69,7 +70,7 @@ spec:
   timeout: 5m
   wait: true
   prune: true
-  path: "./"
+  path: "./"  # <-- Update if source repo has manifests in subfolder
   sourceRef:
     kind: OCIRepository
     name: capacitor
