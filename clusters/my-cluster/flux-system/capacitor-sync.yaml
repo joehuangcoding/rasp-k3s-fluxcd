@@ -44,14 +44,7 @@ kind: Ingress
 metadata:
   name: capacitor
   namespace: flux-system
-  # annotations:
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    # traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
-  # tls:
-  #   - hosts:
-  #       - gitops.alittlehub.com
-  #     secretName: capacitor2-tls-secret
   rules:
     - host: gitops.alittlehub.com
       http:
