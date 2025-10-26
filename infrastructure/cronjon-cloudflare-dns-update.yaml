@@ -28,6 +28,6 @@ spec:
               curl -X PUT "https://api.cloudflare.com/client/v4/zones/585d9a5c37a64b8ce2fdad79381bbdfe/dns_records/de5d46fed905fe4f8c3af624aac823fd" \
                    -H "Authorization: Bearer Ib5xYINQ0lekNbY2gLl3VVpQ7bIczdKBrHvZQMkQ" \
                    -H "Content-Type: application/json" \
-                   --data "{\"type\":\"A\",\"name\":\"alittlehub.com\",\"content\":\"$PUBLIC_IP\",\"ttl\":1,\"proxied\":true}"
+                   --data "{\"type\":\"A\",\"name\":\"alittlehub.com\",\"content\":\"$PUBLIC_IP\",\"ttl\":1,\"proxied\":false}"
               echo "Cloudflare DNS A record updated with $PUBLIC_IP"
           restartPolicy: OnFailure
