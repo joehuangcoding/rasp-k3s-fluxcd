@@ -4,5 +4,6 @@ metadata:
   name: prod-secret-store
   namespace: flux-system
 resources:
+  - namespace.yaml
   - gitrepository.yaml
   - helmrelease.yaml
