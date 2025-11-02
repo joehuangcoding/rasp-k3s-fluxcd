@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: secret-store
+  name: prod-secret-store
   namespace: prod-secret-store
 spec:
   interval: 5m
@@ -15,7 +15,7 @@ spec:
   install:
     createNamespace: true 
   values:
-    appName: secret-store
+    appName: prod-secret-store
 
     image:
       repository: joehuangcoding/secret-store
