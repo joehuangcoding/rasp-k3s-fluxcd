@@ -4,7 +4,6 @@ metadata:
   name: secret-store
   namespace: prod-secret-store
 spec:
-  createNamespace: true  
   interval: 5m
   chart:
     spec:
