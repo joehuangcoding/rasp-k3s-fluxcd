@@ -36,7 +36,7 @@ spec:
       enabled: true
       name: secret-store-config
       data:
-        ,
+        
         PORT: 80
 
     externalSecrets:
