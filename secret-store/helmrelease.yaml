@@ -13,7 +13,7 @@ spec:
         name: secret-store-git
         namespace: prod-secret-store
   install:
-    createNamespace: false
+    createNamespace: true
   values:
     appName: prod-secret-store
     namespace: prod-secret-store
