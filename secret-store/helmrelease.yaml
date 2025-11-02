@@ -9,8 +9,8 @@ spec:
     spec:
       chart: base
       sourceRef:
-        kind: HelmRepository
-        name: secret-store-repo
+        kind: GitRepository
+        name: secret-store-git
         namespace: flux-system
   install:
     createNamespace: true 
