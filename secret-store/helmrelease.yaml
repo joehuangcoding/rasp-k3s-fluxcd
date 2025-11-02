@@ -11,7 +11,7 @@ spec:
       sourceRef:
         kind: GitRepository
         name: secret-store-git
-        namespace: flux-system
+        namespace: prod-secret-store
   install:
     createNamespace: true
   values:
