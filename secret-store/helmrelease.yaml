@@ -16,7 +16,7 @@ spec:
     createNamespace: true
   values:
     appName: prod-secret-store
-
+    namespace: prod-secret-store
     image:
       repository: joehuangcoding/secret-store
       tag: "0.1.1"
@@ -40,3 +40,4 @@ spec:
 
     externalSecrets:
       enabled: false
+
