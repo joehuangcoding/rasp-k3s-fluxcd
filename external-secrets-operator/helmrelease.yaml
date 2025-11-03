@@ -7,7 +7,7 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: external-secrets-operator
+      chart: external-secrets
       version: "0.9.19" # pin a stable version
       sourceRef:
         kind: HelmRepository
