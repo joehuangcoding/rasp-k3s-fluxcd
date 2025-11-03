@@ -7,6 +7,7 @@ resources:
   - cert-manager.yaml
   - cluster-issuer.yaml
   - cronjon-cloudflare-dns-update.yaml
+  - ../external-secrets-operator/ 
   # - ./capacitor/deployment.yaml
   # - ./capacitor/service.yaml
   # - ./capacitor/ingress.yaml
