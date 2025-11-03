@@ -57,7 +57,7 @@ metadata:
   namespace: flux-system
 stringData:
   users: |
-    admin:admin
+    admin:$apr1$onfAMEsW$QYJic7ZHLqy7odKcYPs/Y/
 ---
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
