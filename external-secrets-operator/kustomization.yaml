@@ -7,4 +7,4 @@ resources:
   - helmrepository.yaml
   - helmrelease.yaml
   - cluster-secret-store.yaml
-  - external-secret-test.yaml
+  # - external-secret-test.yaml
