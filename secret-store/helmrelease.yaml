@@ -31,6 +31,14 @@ spec:
     env:
       - name: NODE_ENV
         value: production
+    ingress:
+      enabled: true
+      className: traefik
+      host: secret-store.alittlehub.com
+      path: /
+      tls:
+        enabled: true
+        secretName: "prod-secret-store-tls-secret"
 
     configMap:
       enabled: true
