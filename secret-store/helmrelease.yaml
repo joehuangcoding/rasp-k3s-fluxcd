@@ -40,7 +40,7 @@ spec:
       path: /
       tls:
         enabled: true
-        secretName: "prod-secret-store-tls-secret"
+        secretName: prod-secret-store-tls-secret2
         clusterIssuer: letsencrypt-pro
     configMap:
       enabled: true
