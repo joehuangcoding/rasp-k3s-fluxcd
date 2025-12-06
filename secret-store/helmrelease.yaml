@@ -41,7 +41,7 @@ spec:
       tls:
         enabled: true
         secretName: prod-secret-store-tls-secret2
-        clusterIssuer: letsencrypt-pro
+        clusterIssuer: letsencrypt-prod
     configMap:
       enabled: true
       name: secret-store-config
