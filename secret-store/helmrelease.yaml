@@ -32,7 +32,6 @@ spec:
     env:
       - name: NODE_ENV
         value: production
-        env:
       - name: MONGO_URI
         valueFrom:
         secretKeyRef:
