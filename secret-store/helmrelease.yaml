@@ -32,7 +32,13 @@ spec:
     env:
       - name: NODE_ENV
         value: production
-        
+        env:
+      - name: MONGO_URI
+        valueFrom:
+        secretKeyRef:
+          name: db-connection
+          key: CONNECTION_STRING
+          
     ingress:
       enabled: true
       className: traefik
@@ -46,7 +52,7 @@ spec:
       enabled: true
       name: secret-store-config
       data:
-        
+        #
         PORT: 80
 
     externalSecrets:
