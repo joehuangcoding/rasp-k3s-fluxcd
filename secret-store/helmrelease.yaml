@@ -34,9 +34,9 @@ spec:
         value: production
       - name: MONGO_URI
         valueFrom:
-        secretKeyRef:
-          name: db-connection
-          key: CONNECTION_STRING
+          secretKeyRef:
+            name: db-connection
+            key: CONNECTION_STRING
           
     ingress:
       enabled: true
