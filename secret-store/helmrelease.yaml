@@ -32,11 +32,11 @@ spec:
     env:
       - name: NODE_ENV
         value: production
-      # - name: MONGO_URI
-      #   valueFrom:
-      #     secretKeyRef:
-      #       name: db-connection
-      #       key: CONNECTION_STRING
+      - name: MONGO_URI
+        valueFrom:
+          secretKeyRef:
+            name: db-connection
+            key: CONNECTION_STRING
           
     ingress:
       enabled: true
