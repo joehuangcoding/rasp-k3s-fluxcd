@@ -1,7 +1,7 @@
 # rasp-k3s-fluxcd
 
 # Introduction
-This project is a prototype setup for building a complete development workflow using FluxCD. It includes local development, CI builds, cluster synchronization, secret management, HTTPS certificates, Traefik Ingress, custom operators, CRDs, and more. The first goal is to set up the local development environment and the build/deploy pipeline, after which one or more applications will be deployed. The design and the applications we choose will become clearer as the project evolves. Once the setup proves useful, the project will move from a small Raspberry Pi cluster with an external database to a cloud environment.
+This project is a prototype setup for building a complete development workflow using FluxCD. It includes local development, CI builds, cluster synchronization, secret management, HTTPS certificates, Traefik Ingress, custom operators, CRDs, and more. The first goal is to set up the local development environment and the build/deploy pipeline, after which one or more applications will be deployed. The design and the applications will become clearer as the project evolves. Once the setup proves useful, the project will move from a small Raspberry Pi cluster with an external database to a cloud environment.
 
 # 
 
