@@ -3,7 +3,18 @@
 # Introduction
 This project is a prototype setup for building a complete development workflow using FluxCD. It includes local development, CI builds, cluster synchronization, secret management, HTTPS certificates, Traefik Ingress, custom operators, CRDs, and more. The first goal is to set up the local development environment and the build/deploy pipeline, after which one or more applications will be deployed. The design and the applications will become clearer as the project evolves. Once the setup proves useful, the project will move from a small Raspberry Pi cluster with an external database to a cloud environment.
 
-# 
+# Components
+1. Kubernetes cluster - k3s running on raspberry pi
+2. OpenLens connecting to the cluster
+3. Readonly kubernetes account?
+4. Domans and DNA setup
+5. home router config for redirecting 80, 443 and 6443 for cluster management
+6. Self signed certificate for the cluster url for example myhost.com:6443
+
+# ToDo
+- [x] Kubernetes running on Raspberry pi
+- [ ] Configure CI pipeline  
+- [ ] Deploy first application 
 
 
 ## Setup steps:
