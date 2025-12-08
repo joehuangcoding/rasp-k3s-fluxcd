@@ -7,4 +7,5 @@ resources:
   # - namespace.yaml
   - gitrepository.yaml
   - helmrelease.yaml
+  - cluster-secret-store.yaml
   - external-secret-test.yaml
