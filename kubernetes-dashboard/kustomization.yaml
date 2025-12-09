@@ -9,4 +9,5 @@ resources:
   - helmrelease.yaml
   - readonly-service-account.yaml
   - ingress-tls-fixes.yaml
+  - secret-service-account-token.yaml
   # - ingress.yaml
