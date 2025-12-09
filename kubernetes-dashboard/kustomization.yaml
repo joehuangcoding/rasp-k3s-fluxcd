@@ -8,3 +8,4 @@ resources:
   - helmrepository.yaml
   - helmrelease.yaml
   - readonly-service-account.yaml
+  - ingress.yaml

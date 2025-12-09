@@ -18,7 +18,7 @@ spec:
   values:
     app:
       ingress:
-        enabled: true
+        enabled: false
         ingressClassName: traefik
         hosts: 
           - kubernetes.dashboard.alittlehub.com
@@ -30,6 +30,3 @@ spec:
           scope: cluster
     kong:
       enabled: false
-      proxy:
-        tls:
-          servicePort: 443
