@@ -24,4 +24,7 @@ spec:
           - kubernetes.dashboard.alittlehub.com
         tls:
           enabled: true
-          secretName: "kubernetes-dashboard-tls-secret"
+          secretName: "kubernetes-dashboard-tls-secret"    
+        issuer:
+          name: letsencrypt-prod
+          scope: cluster
