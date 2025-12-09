@@ -80,5 +80,21 @@ flux reconcile helmrelease nodejs-hello-world --namespace flux-system
 
 ## Kubernetes-dashboard Token
 ```
+// Expired in a hour
 kubectl -n NAMESPACE create token SERVICE_ACCOUNT
+```
+
+### Secret based token
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dashboard-readonly-token
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/service-account.name: dashboard-readonly
+type: kubernetes.io/service-account-token
+
+//Read the token
+kubectl -n kubernetes-dashboard get secret dashboard-readonly-token -o jsonpath='{.data.token}' | base64 -d
 ```
