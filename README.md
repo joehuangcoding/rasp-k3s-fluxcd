@@ -77,3 +77,8 @@ flux reconcile helmrelease nodejs-hello-world --namespace flux-system
 --with-source: Reconcile the source (e.g., GitRepository or HelmRepository) before reconciling the resource.
 --dry-run: Preview the changes without applying them.
 ```
+
+## Kubernetes-dashboard Token
+```
+kubectl -n NAMESPACE create token SERVICE_ACCOUNT
+```
