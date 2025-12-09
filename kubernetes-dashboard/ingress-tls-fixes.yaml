@@ -1,27 +1,39 @@
+---
 apiVersion: traefik.io/v1alpha1
 kind: ServersTransport
 metadata:
-  name: dashboard-transport
+  name: k8sdashboard-insecure-transport
   namespace: kubernetes-dashboard
 spec:
   insecureSkipVerify: true
+
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: kubernetes-dashboard
+  name: k8sdashboard-dev-private
   namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/ingress.class: traefik
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`kubernetes.dashboard.alittlehub.com`)
-      kind: Rule
-      middlewares:
-        - name: chain-auth
-          namespace: traefik
+    - kind: Rule
+      match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/`)
       services:
-        - name: kubernetes-dashboard-kong-proxy
+        - kind: Service
+          name: k8sdash-kong-proxy
+          namespace: kubernetes-dashboard
           port: 443
-          scheme: https
-          serversTransport: dashboard-transport
+          serversTransport: k8sdashboard-insecure-transport
+    - kind: Rule
+      match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/api`)
+      services:
+        - kind: Service
+          name: k8sdash-kong-proxy
+          namespace: kubernetes-dashboard
+          port: 443
+          serversTransport: k8sdashboard-insecure-transport
+  tls:
+    secretName: kubernetes-dashboard-tls-secret
