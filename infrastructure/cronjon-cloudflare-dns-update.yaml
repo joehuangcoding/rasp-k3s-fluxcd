@@ -1,4 +1,3 @@
-
 apiVersion: batch/v1
 kind: CronJob
 metadata:
@@ -10,24 +9,25 @@ spec:
     spec:
       template:
         spec:
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                - matchExpressions:
-                  - key: node-role.kubernetes.io/master
-                    operator: Exists
           containers:
-          - name: cloudflare-dns-update
-            image: curlimages/curl:8.10.0
-            command: ["/bin/sh", "-c"]
-            args:
-            - |
-              PUBLIC_IP=$(curl -s https://ipinfo.io/ip)
-              echo "Public IP detected: $PUBLIC_IP"
-              curl -X PUT "https://api.cloudflare.com/client/v4/zones/585d9a5c37a64b8ce2fdad79381bbdfe/dns_records/de5d46fed905fe4f8c3af624aac823fd" \
-                   -H "Authorization: Bearer Ib5xYINQ0lekNbY2gLl3VVpQ7bIczdKBrHvZQMkQ" \
-                   -H "Content-Type: application/json" \
-                   --data "{\"type\":\"A\",\"name\":\"alittlehub.com\",\"content\":\"$PUBLIC_IP\",\"ttl\":1,\"proxied\":false}"
-              echo "Cloudflare DNS A record updated with $PUBLIC_IP"
+            - name: cloudflare-dns-update
+              image: curlimages/curl:8.10.0
+              command:
+                - /bin/sh
+                - "-c"
+              args:
+                - |
+                  PUBLIC_IP=$(curl -s https://ipinfo.io/ip)
+                  echo "Public IP detected: $PUBLIC_IP"
+                  curl -X PUT "https://api.cloudflare.com/client/v4/zones/585d9a5c37a64b8ce2fdad79381bbdfe/dns_records/de5d46fed905fe4f8c3af624aac823fd" \
+                    -H "Authorization: Bearer $CLOUDFLARE_TOKEN" \
+                    -H "Content-Type: application/json" \
+                    --data "{\"type\":\"A\",\"name\":\"alittlehub.com\",\"content\":\"$PUBLIC_IP\",\"ttl\":1,\"proxied\":false}"
+                  echo "Cloudflare DNS A record updated with $PUBLIC_IP"
+              env:
+                - name: CLOUDFLARE_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: cloudflare-api-token
+                      key: token
           restartPolicy: OnFailure
