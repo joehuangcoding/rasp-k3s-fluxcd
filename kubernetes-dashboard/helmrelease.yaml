@@ -16,10 +16,11 @@ spec:
         name: kubernetes-dashboard
         namespace: flux-system
   values:
-    ingress:
-      enabled: true
-      ingressClassName: traefik
-      hosts: kubernetes.dashboard.alittlehub.com
-      tls:
+    app:
+      ingress:
         enabled: true
-        secretName: "kubernetes-dashboard-tls-secret"
+        ingressClassName: traefik
+        hosts: kubernetes.dashboard.alittlehub.com
+        tls:
+          enabled: true
+          secretName: "kubernetes-dashboard-tls-secret"
