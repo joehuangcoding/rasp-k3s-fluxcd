@@ -28,3 +28,5 @@ spec:
         issuer:
           name: letsencrypt-prod
           scope: cluster
+      kong:
+        enabled: false
