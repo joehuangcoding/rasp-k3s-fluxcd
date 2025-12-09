@@ -30,3 +30,6 @@ spec:
           scope: cluster
     kong:
       enabled: false
+      proxy:
+        tls:
+          servicePort: 443
