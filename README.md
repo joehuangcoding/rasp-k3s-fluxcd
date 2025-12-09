@@ -89,6 +89,7 @@ flux reconcile helmrelease nodejs-hello-world --namespace flux-system
 ```
 // Expired in a hour
 kubectl -n NAMESPACE create token SERVICE_ACCOUNT
+kubectl -n kubernetes-dashboard create token dashboard-readonly
 ```
 
 ### Secret based token

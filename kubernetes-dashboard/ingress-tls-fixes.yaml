@@ -27,6 +27,8 @@ spec:
           namespace: kubernetes-dashboard
           port: 443
           serversTransport: k8sdashboard-insecure-transport
+      middlewares:
+        - name: dashboard-auth 
     - kind: Rule
       match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/api`)
       services:
@@ -35,5 +37,7 @@ spec:
           namespace: kubernetes-dashboard
           port: 443
           serversTransport: k8sdashboard-insecure-transport
+      middlewares:
+        - name: dashboard-auth 
   tls:
     secretName: kubernetes-dashboard-tls-secret
