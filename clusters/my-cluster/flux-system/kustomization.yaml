@@ -8,6 +8,7 @@ resources:
 - nodejs-hello-world.yaml
 - capacitor-sync.yaml
 - prod-secret-store.yaml
+- ../../../kubernetes-dashboard/
 # - kube-prometheus-stack.yaml
 # - grafana.yaml
 # - opentelemetry-collector.yaml
