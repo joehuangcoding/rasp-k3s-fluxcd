@@ -20,7 +20,8 @@ spec:
       ingress:
         enabled: true
         ingressClassName: traefik
-        hosts: kubernetes.dashboard.alittlehub.com
+        hosts: 
+          - kubernetes.dashboard.alittlehub.com
         tls:
           enabled: true
           secretName: "kubernetes-dashboard-tls-secret"
