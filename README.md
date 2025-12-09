@@ -37,7 +37,9 @@ This project is a prototype setup for building a complete development workflow u
 
 5. Run bootstap command on your local. It will create Flux resources in your k8s cluster.
 ```
-export GITHUB_TOKEN=<>
+
+export GITHUB_TOKEN=<github_pat>
+
 flux bootstrap github \
   --token-auth \
   --owner=joehuangcoding \
@@ -105,4 +107,31 @@ type: kubernetes.io/service-account-token
 
 //Read the token
 kubectl -n kubernetes-dashboard get secret dashboard-readonly-token -o jsonpath='{.data.token}' | base64 -d
+```
+
+
+# Manually created secrets
+```
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token
+  namespace: default
+type: Opaque
+stringData:
+  token: ""
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: capacitor-basic-auth
+  namespace: flux-system
+type: Opaque
+data:
+  users: <basicAuth>
+---
+
+
 ```
