@@ -8,4 +8,5 @@ resources:
   - helmrepository.yaml
   - helmrelease.yaml
   - readonly-service-account.yaml
+  - ingress-tls-fixes.yaml
   # - ingress.yaml
