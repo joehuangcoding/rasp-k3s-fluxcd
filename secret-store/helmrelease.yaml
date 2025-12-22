@@ -17,9 +17,11 @@ spec:
   values:
     appName: prod-secret-store
     namespace: prod-secret-store
+    imagePullSecrets:
+      - name: ghcr-secret
     image:
-      repository: joehuangcoding/secret-store
-      tag: "0.1.2"
+      repository: ghcr.io/joehuangcoding/secret-store
+      tag: "sha-bfc5ef9"
       pullPolicy: IfNotPresent
 
     replicaCount: 1
