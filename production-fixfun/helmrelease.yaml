@@ -21,7 +21,7 @@ spec:
       - name: ghcr-secret
     image:
       repository: ghcr.io/joehuangcoding/funfix
-      tag: "sha-a460a69@sha256:98585c1038a1068d09e1cd6f35211478455e1ea5f56cdae0796779398c71e19b"
+      tag: "sha-a460a69"
       pullPolicy: IfNotPresent
     replicaCount: 1
     service:
