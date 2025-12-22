@@ -4,5 +4,6 @@ metadata:
   name: production-fixfun
   namespace: flux-system
 resources:
+  - ghcr-secret.yaml
   - gitrepository.yaml
   - helmrelease.yaml
