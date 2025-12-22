@@ -23,7 +23,8 @@ This project is a prototype setup for building a complete development workflow u
 # ToDo
 - [x] Kubernetes running on Raspberry pi
 - [ ] Configure CI pipeline  
-- [ ] Deploy first application 
+- [ ] Deploy first application
+- [ ] How to share ImagePullSecret across namespaces? - make CRDs ClusterSecret?
 
 
 ## Setup steps:
@@ -134,4 +135,45 @@ data:
 ---
 
 
+```
+
+
+#ImagePullSecret
+```
+echo -n "myuser:password" | base64 -> go to auth
+
+//config.json
+{
+  "auths": {
+    "ghcr.io": {
+      "username": "<YOUR_USERNAME>",
+      "password": "<YOUR_PERSONAL_ACCESS_TOKEN>",
+      "email": "<YOUR_EMAIL>",
+      "auth": "<BASE64_OF_USERNAME:PASSWORD>"
+    }
+  }
+}
+
+cat config.json | base64 -w0
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-registry-secret
+  namespace: my-namespace
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: <BASE64_ENCODED_DOCKER_CONFIG_JSON>
+
+
+in Deployment.yaml
+For example
+spec:
+  containers:
+    - name: my-app
+      image: ghcr.io/my-org/my-app:latest
+      ports:
+        - containerPort: 80
+  imagePullSecrets:
+    - name: my-registry-secret
 ```
