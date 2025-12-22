@@ -21,7 +21,7 @@ spec:
       - name: ghcr-secret
     image:
       repository: ghcr.io/joehuangcoding/secret-store
-      tag: "sha-bfc5ef9"
+      tag: "sha-b192901"
       pullPolicy: IfNotPresent
 
     replicaCount: 1
