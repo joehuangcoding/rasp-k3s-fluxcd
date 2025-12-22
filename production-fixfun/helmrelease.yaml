@@ -17,6 +17,8 @@ spec:
   values:
     appName: production-fixfun
     namespace: production-fixfun
+    imagePullSecrets:
+      - name: ghcr-secret
     image:
       repository: ghcr.io/joehuangcoding/funfix
       tag: "sha-aa88838@sha256:0194b46524fa6a0dedabeb355017c4f7b8e55fa41445681e3709b61616961c8a"
