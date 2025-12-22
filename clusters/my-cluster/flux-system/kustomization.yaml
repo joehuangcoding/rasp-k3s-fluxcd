@@ -9,7 +9,7 @@ resources:
 - capacitor-sync.yaml
 - prod-secret-store.yaml
 - ../../../kubernetes-dashboard/
-- ../../../production-fixfun/
+# - ../../../production-fixfun/
 # - kube-prometheus-stack.yaml
 # - grafana.yaml
 # - opentelemetry-collector.yaml
