@@ -1,0 +1,43 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: production-fixfun
+  namespace: flux-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: base
+      sourceRef:
+        kind: GitRepository
+        name: production-fixfun-git
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    appName: production-fixfun
+    namespace: production-fixfun
+    image:
+      repository: ghcr.io/joehuangcoding/funfix
+      tag: "sha-aa88838@sha256:0194b46524fa6a0dedabeb355017c4f7b8e55fa41445681e3709b61616961c8a"
+      pullPolicy: IfNotPresent
+    replicaCount: 1
+    service:
+      type: ClusterIP
+      port: 80
+      targetPort: 3000
+    env:
+      - name: NODE_ENV
+        value: production
+    ingress:
+      enabled: true
+      className: traefik
+      host: fixfun.alittlehub.com
+      path: /
+      tls:
+        enabled: true
+        secretName: production-fixfun-tls-secret
+        clusterIssuer: letsencrypt-prod
+    externalSecrets:
+      enabled: false
+
