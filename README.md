@@ -4,6 +4,8 @@
 
 Access the cluster dashboard here:
 
+👉 https://fixfun.alittlehub.com
+
 👉 https://kubernetes.dashboard.alittlehub.com
 
 
