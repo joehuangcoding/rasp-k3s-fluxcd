@@ -3,10 +3,11 @@
 # Kubernetes Dashboard
 
 Access the cluster dashboard here:
+👉 https://kubernetes.dashboard.alittlehub.com
+
+# Applications
 
 👉 https://fixfun.alittlehub.com
-
-👉 https://kubernetes.dashboard.alittlehub.com
 
 
 # Introduction
