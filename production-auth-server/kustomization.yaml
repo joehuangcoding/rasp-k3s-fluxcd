@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 resources:
   # - namespace.yaml
-  - external-secret-test.yaml
+  - external-secret.yaml
   - ghcr-secret.yaml
   - gitrepository.yaml
   - helmrelease.yaml
