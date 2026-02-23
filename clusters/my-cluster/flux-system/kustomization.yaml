@@ -10,6 +10,7 @@ resources:
 - prod-secret-store.yaml
 - ../../../kubernetes-dashboard/
 - ../../../production-fixfun/
+- ../../../production-auth-server/
 # - kube-prometheus-stack.yaml
 # - grafana.yaml
 # - opentelemetry-collector.yaml

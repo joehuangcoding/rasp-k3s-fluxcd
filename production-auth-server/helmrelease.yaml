@@ -1,0 +1,65 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: production-auth-server
+  namespace: flux-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: base
+      sourceRef:
+        kind: GitRepository
+        name: production-auth-server-git
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    appName: production-auth-server
+    namespace: production-auth-server
+    imagePullSecrets:
+      - name: ghcr-secret
+    image:
+      repository: ghcr.io/joehuangcoding/auth-server
+      tag: "sha-83c09ff"
+      pullPolicy: IfNotPresent
+
+    replicaCount: 1
+
+
+    service:
+      type: ClusterIP
+      port: 80
+
+    env:
+      - name: NODE_ENV
+        value: production
+      # - name: PORT
+      #   value: 80
+      # - name: MONGO_URI
+      #   valueFrom:
+      #     secretKeyRef:
+      #       name: db-connection
+      #       key: CONNECTION_STRING
+  
+    ingress:
+      enabled: true
+      className: traefik
+      host: auth-server.alittlehub.com
+      path: /
+      tls:
+        enabled: true
+        secretName: production-auth-server-tls-secret
+        clusterIssuer: letsencrypt-prod
+    # configMap:
+    #   enabled: true
+    #   name: secret-store-config
+    #   data:
+    #     PORT: 80
+
+    externalSecrets:
+      enabled: false
+      envFrom:
+        enabled: true
+        name: production-auth-server 
+
