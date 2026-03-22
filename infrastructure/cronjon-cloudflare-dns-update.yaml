@@ -9,6 +9,8 @@ spec:
     spec:
       template:
         spec:
+          nodeSelector:
+            node-role.kubernetes.io/control-plane: "true"
           containers:
             - name: cloudflare-dns-update
               image: curlimages/curl:8.10.0
