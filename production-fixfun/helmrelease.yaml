@@ -36,6 +36,11 @@ spec:
           secretKeyRef:
             name: prod-fixfun
             key: db_connection_string
+      - name: AUTHSERVER_URL
+        valueFrom:
+          secretKeyRef:
+            name: prod-fixfun
+            key: AUTHSERVER_URL
     ingress:
       enabled: true
       className: traefik
