@@ -21,7 +21,7 @@ spec:
       - name: ghcr-secret
     image:
       repository: ghcr.io/joehuangcoding/funfix
-      tag: "sha-1096b3a"
+      tag: "sha-48beffc"
       pullPolicy: IfNotPresent
     replicaCount: 1
     service:
