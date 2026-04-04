@@ -18,7 +18,7 @@ spec:
   values:
     app:
       ingress:
-        enabled: false
+        enabled: true
         ingressClassName: traefik
         hosts: 
           - kubernetes.dashboard.alittlehub.com
@@ -29,13 +29,4 @@ spec:
           name: letsencrypt-prod
           scope: cluster
     kong:
-      enabled: false
-      proxy:
-        tls:
-          servicePort: 443
-    api:
-      enabled: true
-    auth:
-      enabled: true
-    web:
       enabled: true
