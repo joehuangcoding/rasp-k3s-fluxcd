@@ -36,7 +36,8 @@ spec:
           name: kubernetes-dashboard-api
           port: 8000
           serversTransport: k8sdashboard-insecure-transport
-
+      middlewares:
+        - name: dashboard-auth
     # Auth
     - kind: Rule
       match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/auth`)
@@ -45,5 +46,7 @@ spec:
           name: kubernetes-dashboard-auth
           port: 8000
           serversTransport: k8sdashboard-insecure-transport
+      middlewares:
+        - name: dashboard-auth
   tls:
     secretName: kubernetes-dashboard-tls-secret
