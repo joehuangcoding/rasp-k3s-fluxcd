@@ -8,19 +8,33 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     traefik.ingress.kubernetes.io/router.middlewares: kubernetes-dashboard-dashboard-auth@kubernetescrd
 spec:
+  ingressClassName: traefik
   rules:
     - host: kubernetes.dashboard.alittlehub.com
       http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: kubernetes-dashboard-web
-              port:
-                number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard-web
+                port:
+                  number: 8000
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard-api
+                port:
+                  number: 8000
+          - path: /auth
+            pathType: Prefix
+            backend:
+              service:
+                name: kubernetes-dashboard-auth
+                port:
+                  number: 8000
   tls:
     - hosts:
-      - kubernetes.dashboard.alittlehub.com
+        - kubernetes.dashboard.alittlehub.com
       secretName: kubernetes-dashboard-tls-secret
-
