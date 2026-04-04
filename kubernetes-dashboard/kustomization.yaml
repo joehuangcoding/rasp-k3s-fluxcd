@@ -6,9 +6,10 @@ metadata:
 resources:
   - namespace.yaml 
   - helmrepository.yaml
+  - ingress.yaml
   - helmrelease.yaml
   - readonly-service-account.yaml
   - secret-service-account-token.yaml
   - dashboard-auth.yaml
   - ingress-tls-fixes.yaml
-  - ingress.yaml
+
