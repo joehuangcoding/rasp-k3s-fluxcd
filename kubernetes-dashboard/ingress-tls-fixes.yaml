@@ -23,11 +23,24 @@ spec:
       match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/`)
       services:
         - kind: Service
-          name: kubernetes-dashboard-kong-proxy
-          namespace: kubernetes-dashboard
-          port: 443
+          name: kubernetes-dashboard-web
+          port: 8000
           serversTransport: k8sdashboard-insecure-transport
       middlewares:
         - name: dashboard-auth
+    - kind: Rule
+      match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/api`)
+      services:
+        - kind: Service
+          name: kubernetes-dashboard-api
+          port: 8000
+          serversTransport: k8sdashboard-insecure-transport
+    - kind: Rule
+      match: Host(`kubernetes.dashboard.alittlehub.com`) && PathPrefix(`/auth`)
+      services:
+        - kind: Service
+          name: kubernetes-dashboard-auth
+          port: 8000
+          serversTransport: k8sdashboard-insecure-transport
   tls:
     secretName: kubernetes-dashboard-tls-secret
