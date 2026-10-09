@@ -8,7 +8,7 @@ resources:
 - nodejs-hello-world.yaml
 - capacitor-sync.yaml
 - prod-secret-store.yaml
-- ../../../kubernetes-dashboard/
+# - ../../../kubernetes-dashboard/
 - ../../../production-fixfun/
 - ../../../production-auth-server/
 # - kube-prometheus-stack.yaml
